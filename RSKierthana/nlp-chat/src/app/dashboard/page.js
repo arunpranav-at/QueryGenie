@@ -4,6 +4,7 @@ import React from "react";
 import Profile from "../components/Profile";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from "chart.js";
+import {details } from "../userDetails.js";
 
 // Register chart components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
@@ -13,7 +14,7 @@ export default function Dashboard() {
     const tokensUsed = 60; // Sample data, replace with actual token usage
     const totalTokens = 100; // Sample data, replace with user's total tokens
     const dailyUsageData = [10, 15, 12, 8, 5, 18, 20]; // Replace with actual data
-
+    console.log(details);
     const progressPercentage = (tokensUsed / totalTokens) * 100;
 
     const lineChartData = {
