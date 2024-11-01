@@ -16,9 +16,10 @@ from configs.llm_config import key, endpoint, get_api_version
 from configs.postgres_config import db_URI, table_name
 
 from ..prompt import history_prompt, no_history_prompt
+from ..DTconverter import convert_to_ist
 
 from models.message_store import get_id, update_ai_data, update_user_data
-from models.sessions import get_session_id, add_dbStructure, get_dbStructure
+from models.sessions import get_session_id, add_dbStructure, get_dbStructure, get_session_DT
 class RequestBody(BaseModel):
     prompt: str
     user_id: str
@@ -105,6 +106,9 @@ def BotHandler(data:RequestBody, response:Response):
         # print(ai_data_id,user_data_id)
         update_ai_data(ai_data_id,response_token,cost)
         update_user_data(user_data_id,input_token)
+        time = str(get_session_DT(session_id))
+        time = str(convert_to_ist(time))[:19]
+        title = structure["name"] + " - " + time
     except KeyError:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Invalid model name")
     except HTTPException as e:
@@ -114,4 +118,4 @@ def BotHandler(data:RequestBody, response:Response):
     #     # conn.close()
     #     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
-    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id, "title": structure["name"]} 
+    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id, "title": title} 

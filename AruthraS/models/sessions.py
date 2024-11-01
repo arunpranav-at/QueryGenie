@@ -33,3 +33,13 @@ def get_dbStructure(session_id):
     db_structure = cur.fetchone()[0]
     db.close()
     return db_structure
+
+def get_session_DT(session_id):
+    db = DB()
+    query = f'''
+    SELECT created_at FROM {table_name} WHERE id = %s
+    '''
+    cur = db.query(query, (session_id,))
+    created_at = cur.fetchone()[0]
+    db.close()
+    return created_at
