@@ -1,16 +1,15 @@
 import psycopg
-from configs.postgres_config import db_URI, table_name
+from configs.postgres_config import db_URI
+from .db import DB
+
+table_name = 'session'
 
 def get_session_id(user_id):
-    conn = psycopg.connect(conninfo=db_URI)
-    cur = conn.cursor()
-    table_name = 'session'
+    db = DB()
     query = f''' 
     INSERT INTO {table_name} (user_id) VALUES (%s) RETURNING id
     '''
-    cur.execute(query, (user_id,))
+    cur = db.query(query, (user_id,))
     session_id = cur.fetchone()[0]
-    conn.commit()
-    cur.close()
-    conn.close()
+    db.close()
     return session_id
