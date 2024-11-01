@@ -22,7 +22,7 @@ from models.sessions import get_session_id, add_dbStructure, get_dbStructure
 class RequestBody(BaseModel):
     prompt: str
     user_id: str
-    session_id: str | bool
+    session_id: str
     structure: Any
     history: bool
     model: str
@@ -39,8 +39,6 @@ def BotHandler(data:RequestBody, response:Response):
         if not session_id:
             session_id = get_session_id(user_id)
             add_dbStructure(session_id,structure)
-        else:
-            structure = get_dbStructure(session_id)
         session_id = str(session_id)
         print(structure)
         api_version = get_api_version(model)

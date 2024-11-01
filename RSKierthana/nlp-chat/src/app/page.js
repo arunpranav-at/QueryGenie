@@ -26,12 +26,12 @@ export default function HomePage() {
     if (message.trim()) { // Ensure message is not just whitespace
       setChatData(prevChatData => ({
         ...prevChatData,
-        [chatId]: [...(prevChatData[chatId] || []), message]
+        "user": [...(prevChatData[chatId] || []), message]
       }));
       const body = {
         prompt: message,
         user_id: details.id,
-        session_id: false,
+        session_id: "",
         structure: databaseDetails,
         history: false,
         model: "gpt-4",
@@ -42,6 +42,10 @@ export default function HomePage() {
         },
       });
       console.log(data)
+      setChatData((prevChatData) => ({
+        ...prevChatData,
+        "bot": [...(prevChatData[chatId] || []), data["response"]],
+      }));
       console.log("Sending message:", message);
       setMessage(''); // Clear the input after sending
     }
