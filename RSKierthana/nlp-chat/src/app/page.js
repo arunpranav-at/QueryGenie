@@ -12,6 +12,8 @@ export default function HomePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [databaseDetails, setDatabaseDetails] = useState([]);
   const chatId = '1'; // Hardcoded chatId for now
+  const [subscriptionType, setSubscriptionType] = useState('');
+  const [openAiModel, setOpenAiModel] = useState('');
 
   useEffect(() => {
     // Open the popup when the component mounts
@@ -38,7 +40,7 @@ export default function HomePage() {
   return (
     <div className='flex flex-col max-h-screen relative ml-64 mr-64'>
     <div className=" bg-secondary-400 text-white min-h-screen overflow-y-auto relative">
-      <Profile />
+      <Profile  subscriptionType={subscriptionType} setSubscriptionType={setSubscriptionType} openAiModel={openAiModel} setOpenAiModel={setOpenAiModel}/>
       {!chatData[chatId] ? (
         <>
           <h1 className="text-3xl font-bold p-6">Start a New Chat</h1>
