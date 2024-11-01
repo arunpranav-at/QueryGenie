@@ -115,4 +115,4 @@ async def BotHandler(data:RequestBody, response:Response):
         # conn.close()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
-    return ret
+    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token} 
