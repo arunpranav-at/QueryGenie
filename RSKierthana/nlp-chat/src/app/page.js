@@ -16,6 +16,7 @@ export default function HomePage() {
   const [isWaitingForBot, setIsWaitingForBot] = useState(false);
   const [subscriptionType, setSubscriptionType] = useState('');
   const [openAiModel, setOpenAiModel] = useState('');
+  const [session_id, setSession_id] = useState('');
 
   useEffect(() => {
     setIsPopupOpen(true); // Open popup on mount
@@ -32,20 +33,17 @@ export default function HomePage() {
       const body = {
         prompt: message,
         user_id: details.id,
-        session_id: "",
+        session_id: session_id,
         structure: databaseDetails,
         history: false,
-        model: "gpt-4",
+        model: openAiModel,
       };
 
       try {
-        const response = await axios.post(`/bot`, body, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await axios.post(`/bot`, body);
         const botMessage = { sender: 'bot', text: response.data.response };
         setChatData(prevChatData => [...prevChatData, botMessage]);
+        setSession_id(response.data.session_id);
       } catch (error) {
         console.error("Error fetching bot response:", error);
       } finally {

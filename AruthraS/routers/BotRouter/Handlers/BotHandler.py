@@ -34,6 +34,7 @@ def BotHandler(data:RequestBody, response:Response):
     structure = data.structure
     history = data.history
     model = data.model
+    model = model.lower()
     session_id = data.session_id
     try:
         if not session_id:
@@ -113,4 +114,4 @@ def BotHandler(data:RequestBody, response:Response):
     #     # conn.close()
     #     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
-    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id} 
+    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id, "title": structure["name"]} 
