@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Profile from './components/Profile';
 import DatabasePopup from './components/DatabasePopup';
 import DatabaseList from './components/DatabaseList';
+import axios from 'axios';
 
 export default function HomePage() {
   const [message, setMessage] = useState('');
@@ -18,12 +19,15 @@ export default function HomePage() {
     setIsPopupOpen(true);
   }, []);
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     if (message.trim()) { // Ensure message is not just whitespace
       setChatData(prevChatData => ({
         ...prevChatData,
         [chatId]: [...(prevChatData[chatId] || []), message]
       }));
+      const backend_url = process.env.NEXT_APP_BACKEND_URL;
+      const data = await axios.get(`http://localhost:8000/test`);
+      console.log(data)
       console.log("Sending message:", message);
       setMessage(''); // Clear the input after sending
     }
