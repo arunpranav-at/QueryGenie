@@ -30,3 +30,23 @@ def get_id(session_id):
     rows = cur.fetchall()
     db.close()
     return rows
+
+def get_chat(session_id):
+    db = DB()
+    query = f'''
+    SELECT message FROM {table_name} WHERE session_id = %s
+    '''
+    cur = db.query(query,(session_id,))
+    rows = cur.fetchall()
+    db.close()
+    messages = []
+    for row in rows:
+        row = row[0]
+        chat = row["data"]["content"]
+        human = True if row["type"]=="human" else False
+        ai = True if row["type"]=="ai" else False
+        if(human):
+            messages.append([0,chat])
+        else:
+            messages.append([1,chat])
+    return messages
