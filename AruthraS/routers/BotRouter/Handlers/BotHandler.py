@@ -18,30 +18,36 @@ from ..prompt import history_prompt, no_history_prompt
 
 from models.message_store import get_id, update_ai_data, update_user_data
 from models.sessions import get_session_id
+from models.tables import add_table, get_table, get_tableId
 
 class TableStruct(BaseModel):
+    name : str
     column: list[str]
-    type: list[str]
+    dataType: list[str]
     constraints: list[str]
 
 class RequestBody(BaseModel):
     prompt: str
     user_id: UUID
     session_id: UUID | bool
-    structure: TableStruct
+    structure: TableStruct | bool
     history: bool
     model: str
 
 async def BotHandler(data:RequestBody, response:Response):
     user_input = data.prompt
     user_id = data.user_id
-    structure = dict(data.structure)
+    structure = data.structure
     history = data.history
     model = data.model
     session_id = data.session_id
     try:
         if not session_id:
             session_id = get_session_id(user_id)
+            add_table(structure,session_id)
+        else:
+            table_id = get_tableId(session_id)
+            structure = get_table(table_id)
         session_id = str(session_id)
         api_version = get_api_version(model)
         llm = AzureChatOpenAI(
