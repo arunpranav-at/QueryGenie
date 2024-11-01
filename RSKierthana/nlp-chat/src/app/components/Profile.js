@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineUser, AiOutlineDashboard, AiOutlineLogout, AiOutlineBell } from 'react-icons/ai';
 
-const Profile = () => {
+const Profile = ({subscriptionType, setSubscriptionType,openAiModel, setOpenAiModel}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [subscriptionType, setSubscriptionType] = useState('');
-  const [openAiModel, setOpenAiModel] = useState('');
+  
 
   // Sample data for subscriptions and models (replace with actual data if needed)
   const subscriptionTypes = ['Free', 'Basic', 'Standard', 'Premium'];

@@ -8,7 +8,8 @@ export default function ChatPage() {
   const [message, setMessage] = useState('');
   const [chatData, setChatData] = useState({});
   const [databaseDetails, setDatabaseDetails] = useState([]);
-
+  const [subscriptionType, setSubscriptionType] = useState('');
+  const [openAiModel, setOpenAiModel] = useState('');
 
   useEffect(() => {
     // Simulate fetching messages based on chatId
@@ -37,7 +38,7 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col ml-64 bg-secondary-400 text-white min-h-screen relative">
-       <Profile />
+       <Profile  subscriptionType={subscriptionType} setSubscriptionType={setSubscriptionType} openAiModel={openAiModel} setOpenAiModel={setOpenAiModel}/>
       <h1 className="text-3xl font-bold p-6">Chat {chatId}</h1>
       <div className="p-4 rounded-lg space-y-3 w-[50%]">
         {messages.map((msg, index) => (
