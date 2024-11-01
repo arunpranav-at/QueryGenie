@@ -14,6 +14,7 @@ const Profile = () => {
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+    console.log('Dropdown Open:', dropdownOpen);
   };
 
   return (
@@ -29,7 +30,7 @@ const Profile = () => {
       </div>
 
       {dropdownOpen && (
-        <div className="absolute right-10 mt-5 w-48 bg-primary rounded shadow-lg">
+        <div className="absolute right-10 mt-9 w-48 bg-primary rounded shadow-lg">
           <div className="py-2 px-4 text-white">John Smith</div>
           <Link href="/dashboard" className="flex items-center py-2 px-4 text-white hover:bg-gray-700">
             <AiOutlineDashboard className="mr-2" />
@@ -43,7 +44,7 @@ const Profile = () => {
       )}
 
       {/* Subscription Type Dropdown */}
-      <div className="absolute top-4 right-[23%]">
+      <div className="absolute top-4 right-[25%]">
         {/* <label className="text-white">Subscription Type:</label> */}
         <select
           value={subscriptionType}

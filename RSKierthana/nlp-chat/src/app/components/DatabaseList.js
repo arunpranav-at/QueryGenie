@@ -2,9 +2,10 @@
 
 import React, { useState,useEffect} from 'react';
 
-const DatabaseList = ({ databaseDetails }) => {
+const DatabaseList = ({ databaseDetails,setDatabaseDetails }) => {
   const [editableField, setEditableField] = useState(null);
   const [editedValue, setEditedValue] = useState('');
+
 
   const handleEditClick = (tableName, columnName, dataType) => {
     setEditableField({ tableName, columnName, dataType });
@@ -39,12 +40,13 @@ const DatabaseList = ({ databaseDetails }) => {
 
     // Update your state or call a prop function to set the updated database details
     // Example: setDatabaseDetails(updatedDatabaseDetails);
-    
+    setDatabaseDetails(updatedDatabaseDetails);
+    setEditableField(null);
     setEditableField(null); // Close the editing mode
   };
 
   return (
-    <div className="fixed right-0 top-0 h-full bg-gray-800 text-white p-4 w-1/6 shadow-lg overflow-y-auto"> {/* Adjust styles here */}
+    <div className="fixed right-0 top-0 h-full bg-gray-800 text-white p-4 w-[19%] shadow-lg overflow-y-auto"> {/* Adjust styles here */}
       {databaseDetails.map(db => (
         <div key={db.name} className="mb-4">
           <h3 className="text-xl font-bold">{db.name}</h3>

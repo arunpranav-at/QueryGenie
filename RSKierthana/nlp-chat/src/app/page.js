@@ -2,7 +2,7 @@
 // src/app/page.js
 
 import React, { useState, useEffect } from 'react';
-import Profile from './components/profile';
+import Profile from './components/Profile';
 import DatabasePopup from './components/DatabasePopup';
 import DatabaseList from './components/DatabaseList';
 
@@ -37,8 +37,8 @@ export default function HomePage() {
 
   return (
     <div className='flex flex-col max-h-screen relative ml-64 mr-64'>
-      <Profile />
     <div className=" bg-secondary-400 text-white min-h-screen overflow-y-auto relative">
+      <Profile />
       {!chatData[chatId] ? (
         <>
           <h1 className="text-3xl font-bold p-6">Start a New Chat</h1>
@@ -56,7 +56,7 @@ export default function HomePage() {
           </div>
         </>
       )}
-      <DatabaseList databaseDetails={databaseDetails} />
+      <DatabaseList databaseDetails={databaseDetails}  setDatabaseDetails={setDatabaseDetails}/>
      
 
       {/* Show Database Popup */}
@@ -64,7 +64,7 @@ export default function HomePage() {
         <DatabasePopup onClose={() => setIsPopupOpen(false)} onSubmit={handleDatabaseSubmit} />
       )}
     </div>
-    <div className="absolute bottom-5 left-0 w-full bg-secondary-400 p-4">
+    <div className="absolute bottom-2 left-[-2%] w-full p-4">
         <div className="flex ">
           <input
             type="text"
