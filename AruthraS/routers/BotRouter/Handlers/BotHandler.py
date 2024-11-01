@@ -33,6 +33,7 @@ def BotHandler(data:RequestBody, response:Response):
     user_input = data.prompt
     user_id = data.user_id
     structure = data.structure
+    structure = structure[0]
     history = data.history
     model = data.model
     model = model.lower()
@@ -113,9 +114,9 @@ def BotHandler(data:RequestBody, response:Response):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Invalid model name")
     except HTTPException as e:
         raise e
-    # except Exception as e:
-    #     print(e)
-    #     # conn.close()
-    #     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
+    except Exception as e:
+        print(e)
+        # conn.close()
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
     return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id, "title": title} 
