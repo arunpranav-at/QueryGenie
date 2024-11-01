@@ -10,7 +10,10 @@ def get_user_email(email):
     SELECT * FROM {table_name} WHERE email = %s
     '''
     curr = db.query(query,(email,))
-    user = curr.fetchone()[0]
+    user = curr.fetchone()
+    if user is None:
+        return None
+    user = user[0]
     db.close()
     return user
 

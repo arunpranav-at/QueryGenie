@@ -114,9 +114,11 @@ async def BotHandler(data:RequestBody, response:Response):
         update_user_data(user_data_id,input_token)
     except KeyError:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Invalid model name")
-    # except Exception as e:
-    #     print(e)
-    #     # conn.close()
-    #     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        print(e)
+        # conn.close()
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
     return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id} 
