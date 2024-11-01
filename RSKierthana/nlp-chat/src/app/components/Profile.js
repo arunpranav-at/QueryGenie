@@ -43,7 +43,7 @@ const Profile = ({subscriptionType, setSubscriptionType,openAiModel, setOpenAiMo
       )}
 
       {/* Subscription Type Dropdown */}
-      <div className="absolute top-4 right-[25%]">
+      <div className="absolute top-4 right-[27%]">
         {/* <label className="text-white">Subscription Type:</label> */}
         <select
           value={subscriptionType}

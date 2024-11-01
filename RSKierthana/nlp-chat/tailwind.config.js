@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -17,7 +18,8 @@ module.exports = {
           200:"#A7A6BA",
           300:"#160D08",
           400:"#020403",
-
+          500:"#808080",
+          600:"#D3D3D3"
         }
       },
     },

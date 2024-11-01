@@ -1,22 +1,29 @@
 // src/Components/Sidebar.js
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineRobot, AiOutlinePlus } from 'react-icons/ai';
+import { useChatContext } from '../context/chatcontext';
+
 
 const Sidebar = () => {
   const [activeChatId, setActiveChatId] = useState(null);
-  
-  const historyItems = [
-    { id: '1', title: "Greetings Exchange" },
-    { id: '2', title: "Database 1" },
-    { id: '3', title: "Database 2" },
-    { id: '4', title: "Database 3" },
-    { id: '5', title: "Database 4" },
-    { id: '6', title: "Database 5" },
-    // Add more items as needed
-  ];
+  const {chatHistory } = useChatContext();
+  useEffect(() => { 
+    console.log(chatHistory);
+  }, [chatHistory]);
+
+
+  // const chatHistory= [
+  //   { id: '1', title: "Greetings Exchange" },
+  //   { id: '2', title: "Database 1" },
+  //   { id: '3', title: "Database 2" },
+  //   { id: '4', title: "Database 3" },
+  //   { id: '5', title: "Database 4" },
+  //   { id: '6', title: "Database 5" },
+  //   // Add more items as needed
+  // ];
   
 
 
@@ -43,7 +50,7 @@ const Sidebar = () => {
         {/* Dynamic Menu */}
         <nav>
           <ul>
-            {historyItems.map((item) => (
+            {chatHistory.map((item) => (
               <li key={item.id} className="mb-4">
                 <Link href={`/chat/${item.id}`} className={`hover:bg-gray-700 p-2 block rounded ${activeChatId === item.id ? 'bg-secondary-100' : ''}`} onClick={() => handleChatClick(item.id)}>
                   {item.title}

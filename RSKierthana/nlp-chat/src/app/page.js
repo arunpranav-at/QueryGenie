@@ -7,8 +7,10 @@ import DatabasePopup from './components/DatabasePopup';
 import DatabaseList from './components/DatabaseList';
 import axios from './_axios';
 import { details } from './userDetails';
+import { useChatContext } from './context/chatcontext';
 
 export default function HomePage() {
+  const { addChat } = useChatContext();
   const [message, setMessage] = useState('');
   const [chatData, setChatData] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -54,6 +56,9 @@ export default function HomePage() {
 
   const handleDatabaseSubmit = (dbDetails) => {
     setDatabaseDetails(dbDetails);
+    // console.log("Database details:", dbDetails);
+    const dbName = dbDetails.length > 0 && dbDetails[0].name ? dbDetails[0].name : "New Chat";
+    addChat(dbName);
     setIsPopupOpen(false);
   };
 
@@ -65,12 +70,12 @@ export default function HomePage() {
         <h1 className="text-3xl font-bold mb-6">Chat Interface</h1>
         
         {/* Chat Display */}
-        <div className="p-4 rounded-lg space-y-4 bg-gray-800 text-white max-w-2xl mx-auto">
+        <div className="p-4 rounded-lg space-y-4  text-white max-w-2xl mx-auto">
           {chatData.map((msg, index) => (
             <div
               key={index}
               className={`p-3 rounded-lg ${
-                msg.sender === 'user' ? 'bg-blue-600 self-end text-right' : 'bg-green-600 self-start text-left'
+                msg.sender === 'user' ? 'bg-secondary-500 self-end text-right' : 'bg-secondary-600 self-start text-left'
               }`}
             >
               {msg.text}
@@ -78,7 +83,7 @@ export default function HomePage() {
           ))}
           {/* Bot loading indicator */}
           {isWaitingForBot && (
-            <div className="self-start text-left bg-green-600 p-3 rounded-lg animate-pulse">
+            <div className="self-start text-left bg-secondary-300 p-3 rounded-lg animate-pulse">
               Bot is typing...
             </div>
           )}
@@ -92,18 +97,18 @@ export default function HomePage() {
       </div>
 
       {/* Input Section */}
-      <div className="absolute bottom-2 left-0 w-full p-4">
+      <div className="absolute bottom-3 left-[-1.5%] w-full p-4">
         <div className="flex">
           <input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
-            className="flex-1 p-3 bg-gray-700 text-white rounded-l-lg outline-none"
+            className="flex-1 p-3 bg-secondary text-white rounded-l-lg outline-none"
           />
           <button
             onClick={handleMessageSend}
-            className="bg-blue-600 p-3 rounded-r-lg hover:bg-blue-700 text-white"
+            className="bg-primary p-3 rounded-r-lg hover:bg-secondary-100 text-white"
           >
             Send
           </button>

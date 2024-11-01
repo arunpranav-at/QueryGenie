@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import Sidebar from "./components/Sidebar";
-
+import { ChatProvider } from './context/chatcontext';
 import "./globals.css";
 
 const geistSans = localFont({
@@ -22,6 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <ChatProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         {/* <Profile/> */}
         <main className="flex-grow p-4">{children}</main>
       </body>
+      </ChatProvider>
     </html>
   );
 }
