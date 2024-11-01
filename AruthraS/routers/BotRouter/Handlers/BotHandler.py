@@ -50,7 +50,7 @@ async def BotHandler(data:RequestBody, response:Response):
             azure_deployment=model,
             api_version=api_version,
             temperature=0,
-            max_tokens=500,
+            max_tokens=200,
             timeout=None,
             max_retries=2,
         )
@@ -67,12 +67,6 @@ async def BotHandler(data:RequestBody, response:Response):
         if(history):
             
             chain = history_prompt | llm
-            max_history_length = 3
-            if (len(chat_history.messages)<=max_history_length):
-                recent_history = chat_history.messages
-            else:
-                recent_history = chat_history.messages[-max_history_length:]
-            print(recent_history)
             app = RunnableWithMessageHistory(
                 chain,
                 lambda: chat_history,
@@ -110,13 +104,13 @@ async def BotHandler(data:RequestBody, response:Response):
         user_data_id = user_data_id[0]
         # [(146,), (145,)]
         # print(ai_data_id,user_data_id)
-        update_ai_data(ai_data_id,user_id,response_token,cost)
-        update_user_data(user_data_id,user_id,input_token)
+        update_ai_data(ai_data_id,response_token,cost)
+        update_user_data(user_data_id,input_token)
     except KeyError:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Invalid model name")
-    except Exception as e:
-        print(e)
-        # conn.close()
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
+    # except Exception as e:
+    #     print(e)
+    #     # conn.close()
+    #     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
     return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id} 
