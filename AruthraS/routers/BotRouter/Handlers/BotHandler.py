@@ -17,6 +17,7 @@ from configs.postgres_config import db_URI, table_name
 from ..prompt import history_prompt, no_history_prompt
 
 from models.message_store import get_id, update_ai_data, update_user_data
+from models.sessions import get_session_id
 
 class TableStruct(BaseModel):
     column: list[str]
@@ -26,7 +27,7 @@ class TableStruct(BaseModel):
 class RequestBody(BaseModel):
     prompt: str
     user_id: UUID
-    session_id: UUID
+    session_id: UUID | bool
     structure: TableStruct
     history: bool
     model: str
@@ -37,8 +38,11 @@ async def BotHandler(data:RequestBody, response:Response):
     structure = dict(data.structure)
     history = data.history
     model = data.model
-    session_id = str(data.session_id)
+    session_id = data.session_id
     try:
+        if not session_id:
+            session_id = get_session_id(user_id)
+        session_id = str(session_id)
         api_version = get_api_version(model)
         llm = AzureChatOpenAI(
             openai_api_key=key,
@@ -52,7 +56,7 @@ async def BotHandler(data:RequestBody, response:Response):
         )
         # pool = AsyncConnectionPool(conninfo=db_URI)
         # conn = pool.connection()
-        print("Connected to database")
+        # print("Connected to database")
 
         def get_session_history():
             return PostgresChatMessageHistory(
@@ -96,11 +100,11 @@ async def BotHandler(data:RequestBody, response:Response):
                 input_token = cb.prompt_tokens
                 response_token = cb.completion_tokens
         print(ret)
-        print(cb)
-        print(cb.total_cost)
-        print(cb.total_tokens)
-        print(cb.prompt_tokens)
-        print(cb.completion_tokens)
+        # print(cb)
+        # print(cb.total_cost)
+        # print(cb.total_tokens)
+        # print(cb.prompt_tokens)
+        # print(cb.completion_tokens)
         [ai_data_id,user_data_id] = get_id(session_id)
         ai_data_id = ai_data_id[0]
         user_data_id = user_data_id[0]
@@ -115,4 +119,4 @@ async def BotHandler(data:RequestBody, response:Response):
         # conn.close()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail= str(e))
     # conn.close()
-    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token} 
+    return {"response":ret, "cost":cost, "input_token":input_token, "response_token":response_token, "session_id":session_id} 
