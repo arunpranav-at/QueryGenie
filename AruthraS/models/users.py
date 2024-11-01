@@ -25,4 +25,3 @@ def add_user(email,password):
     curr = db.query(query,(email,password))
     user_id = curr.fetchone()[0]
     db.close()
-    return user_id

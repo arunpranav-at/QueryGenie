@@ -18,7 +18,6 @@ def SignUpHandler(data: RequestBody, response: Response):
         if user:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="User already exists")
         hashed_password = hash_password(password)
-        print(password)
         add_user(email, hashed_password)
     except HTTPException as e:
         raise e
