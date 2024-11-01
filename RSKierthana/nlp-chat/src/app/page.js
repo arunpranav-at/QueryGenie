@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import Profile from './components/Profile';
 import DatabasePopup from './components/DatabasePopup';
 import DatabaseList from './components/DatabaseList';
-import axios from 'axios';
+import axios from './_axios';
+import { details } from './userDetails';
 
 export default function HomePage() {
   const [message, setMessage] = useState('');
@@ -27,8 +28,19 @@ export default function HomePage() {
         ...prevChatData,
         [chatId]: [...(prevChatData[chatId] || []), message]
       }));
-      const backend_url = process.env.NEXT_APP_BACKEND_URL;
-      const data = await axios.get(`http://localhost:8000/test`);
+      const body = {
+        prompt: message,
+        user_id: details.id,
+        session_id: false,
+        structure: databaseDetails,
+        history: false,
+        model: "gpt-4",
+      };
+      const data = await axios.post(`/bot`, body, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(data)
       console.log("Sending message:", message);
       setMessage(''); // Clear the input after sending
