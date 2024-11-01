@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from uuid import UUID
+from typing import Dict, Any
 
 from fastapi import Response, HTTPException, status
 import psycopg
@@ -20,13 +21,14 @@ from models.message_store import get_id, update_ai_data, update_user_data
 from models.sessions import get_session_id, add_dbStructure, get_dbStructure
 class RequestBody(BaseModel):
     prompt: str
-    user_id: UUID
-    session_id: UUID | bool
-    structure: dict | bool
+    user_id: str
+    session_id: str | bool
+    structure: Any
     history: bool
     model: str
 
 def BotHandler(data:RequestBody, response:Response):
+    print(data)
     user_input = data.prompt
     user_id = data.user_id
     structure = data.structure
