@@ -6,6 +6,8 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 
 **Executive Challenge - "Chat with your data" token utilization and cost monitoring challenge**
 
+![Slide 2](documents/pictures/queryGenie/Slide2.png)
+
 ## Table of Contents
 
 - [Team Members](#team)
@@ -25,6 +27,8 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Aruthra S
 - Arun Pranav A T
 
+![Slide 1](documents/pictures/queryGenie/Slide1.png)
+
 ## Features
 
 - Converts natural language prompts to SQL queries.
@@ -35,6 +39,9 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Allows any form of databases to be linked.
 - Considers history of the chat when required.
 
+## [Project Documentation (Click)](documents/QueryGenie.pdf)
+- Click on the title to view this project presentation saved in the format of pdf.
+
 ## Innovation
 
 - **Provides detailed analytics for each user profile** while existing projects concentrates only on natural language prompts to SQL queries.
@@ -42,6 +49,9 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - **History can be deleted** supporting responsible AI while existing projects could have missed them.
 - **SQL Queries generated are read out loud** which supports visually impaired users.
 - **Prompts can be given in form of voice too** for those who find it difficult to type.
+
+![Slide 3](documents/pictures/queryGenie/Slide3.png)
+![Slide 4](documents/pictures/queryGenie/Slide4.png)
 
 ## Tools
 
@@ -54,6 +64,8 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Github Copilot
 - Git and Github
 - LangChain
+
+![Slide 5](documents/pictures/queryGenie/Slide5.png)
 
 ## Installation
 
@@ -235,3 +247,11 @@ We welcome contributions! Please follow these steps to contribute:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Presentation Slides
+
+![Slide 6](documents/pictures/queryGenie/Slide6.png)
+![Slide 7](documents/pictures/queryGenie/Slide7.png)
+![Slide 8](documents/pictures/queryGenie/Slide8.png)
+![Slide 9](documents/pictures/queryGenie/Slide9.png)
+![Slide 10](documents/pictures/queryGenie/Slide10.png)
