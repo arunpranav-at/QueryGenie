@@ -4,6 +4,8 @@
 
 QueryGenie is an advanced tool that converts natural language prompts (both text and voice inputs) to SQL queries. It manages the usage based on token counts and cost incurred, along with detailed analytics for each user profile.
 
+**YouTube Link - [Click here to watch the YouTube video](https://youtu.be/sqjkA5nLixQ)**
+
 **Executive Challenge - "Chat with your data" token utilization and cost monitoring challenge**
 
 ![Slide 2](documents/pictures/QueryGenie/Slide2.PNG)
