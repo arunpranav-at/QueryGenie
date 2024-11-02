@@ -4,6 +4,8 @@
 
 QueryGenie is an advanced tool that converts natural language prompts (both text and voice inputs) to SQL queries. It manages the usage based on token counts and cost incurred, along with detailed analytics for each user profile.
 
+**Executive Challenge - "Chat with your data" token utilization and cost monitoring challenge**
+
 ## Table of Contents
 
 - [Team Members](#team)
@@ -13,9 +15,10 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Project Structure](#querygenie-project-structure)
 - [Contributing](#contributing)
-- [License](#license)'
+- [License](#license)
 
 ## Team
 - RS Kierthana
@@ -124,6 +127,14 @@ The frontend configuration files are located in the root directory of the `front
     npm run dev
     ```
 
+# Screenshots
+
+![Home Page](documents/pictures/maindashboard.png)
+![Analytics Page](documents/pictures/analytics.png)
+![Home Page](documents/pictures/userprofile.png)
+![Home Page](documents/pictures/database.png)
+
+
 # QueryGenie Project Structure
 
 ## Root Directory
@@ -209,3 +220,18 @@ The frontend configuration files are located in the root directory of the `front
     - `layout.js`
     - `page.js`
     - `userDetails.js`
+
+## Contributing
+
+We welcome contributions! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
