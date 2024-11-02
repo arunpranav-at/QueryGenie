@@ -27,7 +27,7 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Aruthra S
 - Arun Pranav A T
 
-![Slide 1](documents/pictures/queryGenie/Slide1.png)
+![Slide 1](documents/pictures/QueryGenie/Slide1.png)
 
 ## Features
 
