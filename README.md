@@ -124,7 +124,7 @@ The frontend configuration files are located in the root directory of the `front
 2. Start the backend server:
 
     ```sh
-    python server.py
+    fastapi run server.py
     ```
 
 ### Running the Frontend
@@ -198,7 +198,25 @@ The frontend configuration files are located in the root directory of the `front
 
 ## Documents Directory
 - `documents/`
-  - `hello.txt`
+  - `pictures/`
+    - `QueryGenie/`
+      - `Slide1.PNG`
+      - `Slide2.PNG`
+      - `Slide3.PNG`
+      - `Slide4.PNG`
+      - `Slide5.PNG`
+      - `Slide6.PNG`
+      - `Slide7.PNG`
+      - `Slide8.PNG`
+      - `Slide9.PNG`
+      - `Slide10.PNG`
+    - `analytics.png`
+    - `database.png`
+    - `maindashboard.png`
+    - `userprofile.png`
+  - `QueryGenie - Video.mp4`
+  - `QueryGenie.pdf`
+  - `QueryGenie.pptx`
 
 ## Frontend Directory
 - `.env`
