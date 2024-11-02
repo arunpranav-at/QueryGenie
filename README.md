@@ -74,8 +74,8 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 1. Clone the repository:
 
     ```sh
-    https://github.com/arunpranav-at/NLP-to-SQL.git
-    cd NLP-to-SQL
+    https://github.com/arunpranav-at/QueryGenie.git
+    cd QueryGenie
     ```
 
 2. Install the required dependencies:
