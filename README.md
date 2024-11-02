@@ -6,7 +6,7 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 
 **Executive Challenge - "Chat with your data" token utilization and cost monitoring challenge**
 
-![Slide 2](documents/pictures/queryGenie/Slide2.png)
+![Slide 2](documents/pictures/QueryGenie/Slide2.PNG)
 
 ## Table of Contents
 
