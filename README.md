@@ -27,7 +27,7 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Aruthra S
 - Arun Pranav A T
 
-![Slide 1](documents/pictures/QueryGenie/Slide1.png)
+![Slide 1](documents/pictures/QueryGenie/Slide1.PNG)
 
 ## Features
 
@@ -50,8 +50,8 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - **SQL Queries generated are read out loud** which supports visually impaired users.
 - **Prompts can be given in form of voice too** for those who find it difficult to type.
 
-![Slide 3](documents/pictures/queryGenie/Slide3.png)
-![Slide 4](documents/pictures/queryGenie/Slide4.png)
+![Slide 3](documents/pictures/QueryGenie/Slide3.PNG)
+![Slide 4](documents/pictures/QueryGenie/Slide4.PNG)
 
 ## Tools
 
@@ -65,7 +65,7 @@ QueryGenie is an advanced tool that converts natural language prompts (both text
 - Git and Github
 - LangChain
 
-![Slide 5](documents/pictures/queryGenie/Slide5.png)
+![Slide 5](documents/pictures/QueryGenie/Slide5.PNG)
 
 ## Installation
 
@@ -250,8 +250,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Presentation Slides
 
-![Slide 6](documents/pictures/queryGenie/Slide6.png)
-![Slide 7](documents/pictures/queryGenie/Slide7.png)
-![Slide 8](documents/pictures/queryGenie/Slide8.png)
-![Slide 9](documents/pictures/queryGenie/Slide9.png)
-![Slide 10](documents/pictures/queryGenie/Slide10.png)
+![Slide 6](documents/pictures/QueryGenie/Slide6.PNG)
+![Slide 7](documents/pictures/QueryGenie/Slide7.PNG)
+![Slide 8](documents/pictures/QueryGenie/Slide8.PNG)
+![Slide 9](documents/pictures/QueryGenie/Slide9.PNG)
+![Slide 10](documents/pictures/QueryGenie/Slide10.PNG)
